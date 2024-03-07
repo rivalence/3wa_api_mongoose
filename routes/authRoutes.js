@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
       res.json("Bad credentials");
 
     const token = jwt.sign({ user }, process.env.TOKEN_KEY, {
-      expiresIn: "1d",
+      expiresIn: "1h",
     });
 
     res.header("auth-token", token);

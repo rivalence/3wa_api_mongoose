@@ -1,9 +1,10 @@
 import express from "express";
 import Manga from "../model/mangaModel.js";
+import { verifyJWT } from "../middlewares/verifyJWT.js";
 
 const router = express.Router();
 
-router.get("/manga", async (req, res) => {
+router.get("/manga", verifyJWT, async (req, res) => {
   try {
     const mangas = await Manga.find();
     res.json(mangas);
