@@ -3,7 +3,7 @@ import Manga from "../model/mangaModel.js";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/manga", async (req, res) => {
   try {
     const mangas = await Manga.find();
     res.json(mangas);
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/manga/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const manga = await Manga.findById(id);
@@ -22,7 +22,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/manga", async (req, res) => {
   try {
     const { name, topic } = req.body;
     const manga = await Manga.create({ name, topic });
@@ -32,7 +32,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/manga/:id", async (req, res) => {
   try {
     const { name, topic } = req.body;
     const { id } = req.params;
